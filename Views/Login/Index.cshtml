@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LoginViewModel
+
+<h1>Kullanıcı Giriş</h1>
+
+<form asp-controller="Login" asp-action="Index" method="post">
+
+
+    <div class="container">
+
+        
+        <label for="uname"><b>Kullanıcı Adı</b></label>
+        <input type="text" placeholder="Kullanıcı Adı Giriniz" name="UserName" required>
+
+        
+        <label for="psw"><b>Şifre</b></label>
+        <input type="password" placeholder="Şifre Giriniz" name="Password" required>
+
+        <button type="submit">Giriş Yap</button>
+        <button type="submit">
+            <a class="nav-link text-dark" asp-area="" asp-controller="RegisterUser" asp-action="Index">Kayıt Ol</a>
+        </button>
+        <button type="submit">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="GoogleLogin">Google İle Oturum Aç</a>
+           </button>
+    </div>
+
+</form>
+
+
+<style>
+    form {
+        border: 3px solid #f1f1f1;
+    }
+
+    /* Full-width inputs */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        /* Add a hover effect for buttons */
+        button:hover {
+            opacity: 0.8;
+        }
+
+    /* Extra style for the cancel button (red) */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the avatar image inside this container */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
+
+    /* Avatar image */
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding: 16px;
+    }
+
+    /* The "Forgot password" text */
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+
+    .cancelbtn {
+        width: 100%;
+    }
+
+    }
+</style>
+
+

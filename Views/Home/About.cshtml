@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>About</h1>
+<p><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></p>
+
+<ul>
+
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <li>
+            <a>Hello @User.Identity.Name</a>
+        </li>
+
+        <li>
+            <a asp-controller="Home" asp-action="Logout">Logout</a>
+        </li>
+    }
+
+</ul>

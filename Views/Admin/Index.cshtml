@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Book>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Kitap Id</th>
+                        <th scope="col">Kitap İsmi</th>
+                        <th scope="col">Kitap Yazarı</th>
+                        <th scope="col">Kitap Durumu</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.Id</td>
+                            <td>@x.Name</td>
+                            <td>@x.Writer</td>
+                            <td>@x.Status</td>
+                            <td>
+                                <form action="/Admin/BookStatusChange" method="get">
+                                    <input type="hidden" name="Id" value="@x.Id" />
+                                    <button type="submit" class="btn btn-outline-warning">Durum Değiştir</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<form class="form-inline" asp-action="InsertBook" asp-controller="Admin" method="post">
+    <label for="text">İsim : </label>
+    <input type="text" class="form-control" placeholder="Kitap İsmi Girin" name="Name">
+    <label for="text">Yazar : </label>
+    <input type="text" class="form-control" placeholder="Yazar İsmi Girin" name="Writer">
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>

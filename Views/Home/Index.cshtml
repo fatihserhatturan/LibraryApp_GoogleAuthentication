@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Book>;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <br />
+    <br />
+    <div class="card-container">
+
+        @foreach (var x in Model)
+        {
+
+            <div class="card">
+                <img src="/Images/indir.png" alt="BookImage" style="width:100%">
+                <h1>@x.Name</h1>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <p>@x.Writer</p>
+   
+                <form action="/Bookmark/AddBookmark" method="get">
+                   <input type="hidden" name="Id" value="@x.Id" />
+                    <input type="submit" class="button detay-buton" value="Sepete Ekle">
+                </form>
+
+
+            </div>
+
+        }
+
+
+    </div>
+
+
+</body>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 250px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        height: 100%;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Kartları sütunlara yerleştirir */
+        gap: 20px; /* Kartlar arasında boşluk bırakır */
+    }
+
+    .card button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .card p {
+        flex-grow: 1; /* İçerik alanını doldurmak için */
+        padding: 10px;
+    }
+
+    .card button:hover {
+        opacity: 0.7;
+    }
+
+    .button.detay-buton {
+        background-color: #ff6600; /* Arka plan rengi */
+        color: #fff; /* Yazı rengi */
+        font-size: 16px; /* Yazı boyutu */
+        padding: 10px 20px; /* Düğme içi dolgu */
+        border: none; /* Kenarlık yok */
+        border-radius: 5px; /* Kenar yuvarlama */
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Geçiş efekti */
+    }
+
+        /* Düğmeye fare üzerine gelindiğinde stil */
+        .button.detay-buton:hover {
+            background-color: #ff3300; /* Arka plan rengini değiştir */
+        }
+
+</style>
+
+
+</html>
